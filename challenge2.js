@@ -6,10 +6,16 @@
  * 1. Read over the code that follows. What will be printed to the console when
  *    it runs? Run the code using `node challenge2.js` and verify that your
  *    expectation was correct.
+ *    
+ * 
+ *    ANS: A hello <name> statement will be printed first followed by a string "make school is awesome"
  * 
  * 
  * 2. What happens if greet() fails? Make it fail by changing 'name' to a number
  *    instead of a string. What happens? Does uppercaser() still run?
+ * 
+ * 
+ *    ANS: Error is shown, must be string.
  * 
  * 
  * 3. What happens if greet() succeeds and uppercaser() fails? Modify your code
@@ -35,6 +41,18 @@
   * Asynchronously returns a greeting for a specified name.
   * @param name The name of the person to greet.
   */
+
+function spacer(str) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      if (typeof str === 'string') {
+        resolve()
+      }
+
+    })
+  })
+}
+
 function greet(name) {
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
