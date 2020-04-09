@@ -22,7 +22,7 @@
 function snooze(action) {
     setTimeout(function() {
       action();
-    }, 2000);
+    }, 0);
 }
 console.log('Step 1');
 
