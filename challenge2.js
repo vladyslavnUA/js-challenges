@@ -23,6 +23,9 @@
  *    run the code again.
  * 
  * 
+ *    ANS: uppercase() is rejected.
+ * 
+ * 
  * 4. Write a method that takes a string as input and returns the input string
  *    with a space added between each character. E.g. 'foo' -> 'f o o'
  * 
@@ -42,15 +45,17 @@
   * @param name The name of the person to greet.
   */
 
-function spacer(str) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
+const spacer = async (str) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
       if (typeof str === 'string') {
-        resolve()
+        result = str.split('').join(' ');
+        resolve(result);
+      } else {
+        resolve("error");
       }
-
-    })
-  })
+    });
+  });
 }
 
 function greet(name) {
@@ -83,6 +88,7 @@ function uppercaser(str) {
 
 name = 'Ducky'
 my_str = 'Make School is Awesome!!!'
+str = 'abcdefg'
 
 greet(name)
     .then((greetResult) => {
@@ -91,6 +97,10 @@ greet(name)
     })
     .then((uppercaserResult) => {
         console.log(uppercaserResult)
+        return spacer(str);
+    })
+    .then((spacerResult) => {
+      console.log(spacerResult);
     }).catch((err) => {
         console.log('Received an error!')
         console.log(err);
