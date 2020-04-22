@@ -9,7 +9,9 @@
  *    `npm init` first.)
  * 
  * 
- *    ANS: 
+ *    ANS: When makePromise is called, a pending promise message returns until
+ *         a 'request' response is recieved. If any problems occur while Parsing
+ *         data, a rejection error is displayed.
  * 
  * 
  * 2. Sometimes, when making API calls, we want to make a bunch of calls in
@@ -19,6 +21,9 @@
  *    Uncomment code block #2 and run the code. What happens? What advantages 
  *    does `Promise.all` give us when dealing with promises?
  * 
+ *    ANS: Uncommenting #2 runs through each of the 3 Person promises. 
+ *         An advantage to this is Promise.all() lets you run multiple
+ *         Promises rather than a continuous .then() statement.
  * 
  * 3. Make another variable `planet1Promise` and assign to it the result of
  *    calling `makePromise` with the URL `https://swapi.co/api/planets/1`.
@@ -58,6 +63,7 @@ function makePromise(url) {
 const person1Promise = makePromise('https://swapi.co/api/people/1')
 const person2Promise = makePromise('https://swapi.co/api/people/2')
 const person3Promise = makePromise('https://swapi.co/api/people/3')
+const planet1Promise = makePromise('https://swapi.co/api/planets/1')
 
 /* Uncomment me! #1 */
 person1Promise.then(function(personResult) {
@@ -68,13 +74,13 @@ person1Promise.then(function(personResult) {
 });
 
 /* Uncomment me! #2 */
-// Promise.all([person1Promise, person2Promise, person3Promise])
-//     .then(function(results) {
-//         for (let i = 0; i < 3; i++) {
-//             console.log(`Person ${i+1}'s name: ${results[i].name}`)
-//         }
-//     })
-//     .catch(function(err) {
-//         console.log('Got an error!')
-//         console.log(err)
-//     })
+Promise.all([person1Promise, person2Promise, person3Promise, planet1Promise])
+    .then(function(results) {
+        for (let i = 0; i < 3; i++) {
+            console.log(`Person ${i+1}'s name: ${results[i].name}`)
+        }
+    })
+    .catch(function(err) {
+        console.log('Got an error!')
+        console.log(err)
+    })
