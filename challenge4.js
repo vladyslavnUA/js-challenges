@@ -9,6 +9,9 @@
  *    `npm init` first.)
  * 
  * 
+ *    ANS: 
+ * 
+ * 
  * 2. Sometimes, when making API calls, we want to make a bunch of calls in
  *    parallel and don't care in what order they resolve. (In other words, they
  *    don't depend on each other.)
@@ -57,12 +60,12 @@ const person2Promise = makePromise('https://swapi.co/api/people/2')
 const person3Promise = makePromise('https://swapi.co/api/people/3')
 
 /* Uncomment me! #1 */
-// person1Promise.then(function(personResult) {
-//     console.log(`Resulting person's name: ${personResult.name}`);
-// }).catch(function(err) {
-//     console.log("Got an error!")
-//     console.log(err);
-// });
+person1Promise.then(function(personResult) {
+    console.log(`Resulting person's name: ${personResult.name}`);
+}).catch(function(err) {
+    console.log("Got an error!")
+    console.log(err);
+});
 
 /* Uncomment me! #2 */
 // Promise.all([person1Promise, person2Promise, person3Promise])
